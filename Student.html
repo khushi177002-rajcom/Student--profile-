@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Khushi Raj — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#070a12; --bg2:#0c1120; --card:rgba(255,255,255,.045); --card-b:rgba(255,255,255,.09);
+  --line:rgba(255,255,255,.09); --white:#f4f6fb; --muted:#9aa3b5; --cyan:#22d3ee; --purple:#a78bfa;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth; scroll-padding-top:76px; height:100%;}
+body{background:var(--bg); color:var(--white); font-family:'Inter',-apple-system,Arial,sans-serif; line-height:1.6; overflow-x:hidden;}
+h1,h2,h3{font-family:'Sora',sans-serif;}
+a{color:inherit; text-decoration:none;}
+.grad-text{background:linear-gradient(90deg,var(--cyan),var(--purple)); -webkit-background-clip:text; background-clip:text; color:transparent;}
+.wrap{max-width:1080px; margin:0 auto; padding:0 24px;}
+.eyebrow{font-size:.75rem; letter-spacing:.14em; color:var(--cyan); font-weight:600; margin-bottom:10px;}
+section{padding:90px 0;}
+section h2{font-size:1.9rem; margin-bottom:8px;}
+section .lede{color:var(--muted); max-width:60ch; margin-bottom:40px;}
+
+/* Nav */
+nav{position:fixed; top:0; left:0; right:0; z-index:50; background:rgba(7,10,18,.7); backdrop-filter:blur(14px); border-bottom:1px solid var(--line);}
+.navbar{display:flex; align-items:center; justify-content:space-between; padding:16px 24px; max-width:1080px; margin:0 auto;}
+.logo{font-family:'Sora',sans-serif; font-weight:700; font-size:1.05rem;}
+.navlinks{display:none; gap:28px; font-size:.9rem; color:var(--muted);}
+.navlinks a:hover{color:var(--white);}
+.burger{display:flex; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:6px;}
+.burger span{width:22px; height:2px; background:var(--white); display:block;}
+.mobmenu{display:none; flex-direction:column; padding:10px 24px 20px; gap:14px; border-top:1px solid var(--line); font-size:.92rem; color:var(--muted);}
+.mobmenu.open{display:flex;}
+@media (min-width:820px){ .navlinks{display:flex;} .burger{display:none;} }
+
+/* Hero */
+.hero{padding:150px 0 90px; position:relative;}
+.glow{position:absolute; width:420px; height:420px; border-radius:50%; filter:blur(120px); opacity:.35; z-index:0;}
+.glow.c1{background:var(--cyan); top:-80px; right:-100px;}
+.glow.c2{background:var(--purple); bottom:-60px; left:-120px;}
+.hero .in{position:relative; z-index:1; display:flex; flex-direction:column; align-items:center; text-align:center; gap:22px;}
+.ring{width:132px; height:132px; border-radius:50%; padding:3px; background:conic-gradient(var(--cyan),var(--purple),var(--cyan));}
+.ring .inner{width:100%; height:100%; border-radius:50%; background:var(--bg2); border:2px solid var(--bg);}
+.hero h1{font-size:2.5rem; font-weight:800; letter-spacing:-.01em;}
+.hero .role{color:var(--muted); font-size:1.05rem; max-width:46ch;}
+.hero .intro{color:var(--muted); font-size:.98rem; max-width:56ch;}
+.ctarow{display:flex; gap:14px; flex-wrap:wrap; justify-content:center; margin-top:6px;}
+.btn{padding:14px 26px; border-radius:8px; font-weight:600; font-size:.92rem; transition:transform .2s ease;}
+.btn:hover{transform:translateY(-2px);}
+.btn.grad{background:linear-gradient(90deg,var(--cyan),var(--purple)); color:#08101a; box-shadow:0 0 30px -8px var(--cyan);}
+.btn.outline{border:1px solid var(--card-b); color:var(--white);}
+
+/* Cards generic */
+.card{background:var(--card); border:1px solid var(--card-b); border-radius:14px; padding:24px; transition:transform .2s ease,border-color .2s ease;}
+.card:hover{transform:translateY(-4px); border-color:rgba(34,211,238,.35);}
+
+/* About */
+.about-grid{display:grid; gap:20px; grid-template-columns:1fr;}
+.infolist{display:grid; grid-template-columns:1fr 1fr; gap:14px 18px; font-size:.9rem;}
+.infolist .k{color:var(--muted); font-size:.76rem; text-transform:uppercase; letter-spacing:.05em; margin-bottom:3px;}
+@media (min-width:760px){ .about-grid{grid-template-columns:1.1fr .9fr;} }
+
+/* Education timeline */
+.tl{border-left:2px solid var(--card-b); margin-left:8px;}
+.tl-item{position:relative; padding:0 0 34px 28px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-item::before{content:""; position:absolute; left:-7px; top:2px; width:12px; height:12px; border-radius:50%; background:linear-gradient(90deg,var(--cyan),var(--purple));}
+.tl-item h3{font-size:1.05rem; margin-bottom:4px;}
+.tl-item .meta{color:var(--muted); font-size:.86rem; margin-bottom:6px;}
+.tl-item .tag{display:inline-block; font-size:.74rem; color:var(--cyan); border:1px solid rgba(34,211,238,.35); padding:3px 10px; border-radius:20px;}
+
+/* Skills */
+.grid{display:grid; gap:16px; grid-template-columns:repeat(2,1fr);}
+@media (min-width:640px){ .grid{grid-template-columns:repeat(3,1fr);} }
+@media (min-width:900px){ .grid{grid-template-columns:repeat(4,1fr);} }
+.skill h3{font-size:.98rem; margin-bottom:8px;}
+.bar{height:5px; background:rgba(255,255,255,.08); border-radius:6px; overflow:hidden; margin-bottom:8px;}
+.bar i{display:block; height:100%; background:linear-gradient(90deg,var(--cyan),var(--purple));}
+.skill .lvl{font-size:.76rem; color:var(--muted);}
+
+/* Interests tags */
+.tagwrap{display:flex; flex-wrap:wrap; gap:10px;}
+.tagwrap span{border:1px solid var(--card-b); background:var(--card); padding:9px 16px; border-radius:20px; font-size:.88rem;}
+
+/* Activities / Projects grid */
+.grid3{display:grid; gap:18px; grid-template-columns:1fr;}
+@media (min-width:700px){ .grid3{grid-template-columns:repeat(3,1fr);} }
+.proj-grid{display:grid; gap:18px; grid-template-columns:1fr;}
+@media (min-width:700px){ .proj-grid{grid-template-columns:repeat(2,1fr);} }
+.proj h3{font-size:1.05rem; margin-bottom:6px;}
+.proj p{color:var(--muted); font-size:.9rem; margin-bottom:12px;}
+.proj .techs{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:16px;}
+.proj .techs span{font-size:.72rem; color:var(--purple); border:1px solid rgba(167,139,250,.35); padding:3px 9px; border-radius:20px;}
+.proj a.view{font-size:.86rem; font-weight:600; color:var(--cyan);}
+
+/* Achievements */
+.ach{border-style:dashed; color:var(--muted); text-align:center; font-size:.88rem;}
+
+/* Contact */
+.contact-grid{display:grid; gap:24px; grid-template-columns:1fr;}
+@media (min-width:760px){ .contact-grid{grid-template-columns:.9fr 1.1fr;} }
+.clinks a{display:block; padding:12px 0; border-bottom:1px solid var(--line); font-size:.92rem;}
+.clinks a:hover{color:var(--cyan);}
+form input, form textarea{width:100%; background:rgba(255,255,255,.03); border:1px solid var(--card-b); color:var(--white); padding:12px 14px; border-radius:8px; font-family:inherit; font-size:.9rem; margin-bottom:14px;}
+form textarea{resize:vertical; min-height:100px;}
+form button{width:100%;}
+
+footer{border-top:1px solid var(--line); padding:30px 0; text-align:center; color:var(--muted); font-size:.82rem;}
+
+@media (prefers-reduced-motion:reduce){ .card,.btn{transition:none;} }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="navbar">
+    <div class="logo">Khushi<span class="grad-text">.</span></div>
+    <div class="navlinks">
+      <a href="#home">Home</a><a href="#about">About</a><a href="#education">Education</a>
+      <a href="#skills">Skills</a><a href="#interests">Interests</a><a href="#contact">Contact</a>
+    </div>
+    <button class="burger" onclick="document.getElementById('mm').classList.toggle('open')"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobmenu" id="mm">
+    <a href="#home">Home</a><a href="#about">About</a><a href="#education">Education</a>
+    <a href="#skills">Skills</a><a href="#interests">Interests</a><a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<section class="hero" id="home">
+  <div class="glow c1"></div><div class="glow c2"></div>
+  <div class="wrap in">
+    <div class="ring"><div class="inner"></div></div>
+    <h1>Khushi Raj</h1>
+    <p class="role"><span class="grad-text">B.Tech Electronics &amp; Communication Engineering</span> Student</p>
+    <p class="intro">Engineering student passionate about technology, artificial intelligence, and web development — building a strong foundation while exploring how design and code come together to create meaningful, useful products.</p>
+    <div class="ctarow">
+      <a class="btn grad" href="#about">View Profile</a>
+      <a class="btn outline" href="#contact">Contact Me</a>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="eyebrow">ABOUT</div>
+    <h2>Who I am</h2>
+    <div class="about-grid">
+      <div class="card">
+        <p style="color:var(--muted); font-size:.98rem;">I'm Khushi Raj, a B.Tech Electronics &amp; Communication Engineering student with a growing interest in artificial intelligence, web development, and creative design. I enjoy learning new tools, solving problems, and turning ideas into working projects — always looking for the next skill to pick up.</p>
+      </div>
+      <div class="card infolist">
+        <div><div class="k">Name</div>Khushi Raj</div>
+        <div><div class="k">Role</div>ECE Student</div>
+        <div><div class="k">Focus</div>AI &amp; Web Dev</div>
+        <div><div class="k">Email</div>khushi.raj@example.com</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <div class="eyebrow">EDUCATION</div>
+    <h2>Academic background</h2>
+    <div class="tl">
+      <div class="tl-item">
+        <h3>B.Tech — Electronics &amp; Communication Engineering</h3>
+        <div class="meta">UIT, RGPV · 2026 – Present</div>
+        <span class="tag">In progress</span>
+      </div>
+      <div class="tl-item">
+        <h3>Class 12 — Science (PCM)</h3>
+        <div class="meta">Oxford Convent Hr. Sec. School · 2026</div>
+        <span class="tag">Completed</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="eyebrow">SKILLS</div>
+    <h2>What I'm building</h2>
+    <div class="grid">
+      <div class="card skill"><h3>HTML</h3><div class="bar"><i style="width:55%"></i></div><div class="lvl">Learning</div></div>
+      <div class="card skill"><h3>Python</h3><div class="bar"><i style="width:50%"></i></div><div class="lvl">Learning</div></div>
+      <div class="card skill"><h3>Web Development</h3><div class="bar"><i style="width:60%"></i></div><div class="lvl">Developing</div></div>
+      <div class="card skill"><h3>Artificial Intelligence</h3><div class="bar"><i style="width:40%"></i></div><div class="lvl">Exploring</div></div>
+      <div class="card skill"><h3>Creative Design</h3><div class="bar"><i style="width:65%"></i></div><div class="lvl">Developing</div></div>
+      <div class="card skill"><h3>Digital Tools</h3><div class="bar"><i style="width:75%"></i></div><div class="lvl">Proficient</div></div>
+      <div class="card skill"><h3>Communication</h3><div class="bar"><i style="width:85%"></i></div><div class="lvl">Strong</div></div>
+      <div class="card skill"><h3>Problem Solving</h3><div class="bar"><i style="width:80%"></i></div><div class="lvl">Strong</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="interests">
+  <div class="wrap">
+    <div class="eyebrow">INTERESTS</div>
+    <h2>What I care about</h2>
+    <div class="tagwrap">
+      <span>Artificial Intelligence</span><span>Web Development</span><span>Game Development</span>
+      <span>Creative Design</span><span>Technology</span><span>Communication</span>
+      <span>Learning New Skills</span><span>Badminton</span>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="eyebrow">CONTACT</div>
+    <h2>Let's connect</h2>
+    <div class="contact-grid">
+      <div class="card clinks">
+        <a href="mailto:khushi.raj@example.com">khushi.raj@example.com</a>
+        <a href="#">linkedin.com/in/khushiraj</a>
+        <a href="#">github.com/khushiraj</a>
+      </div>
+      <div class="card">
+        <form onsubmit="return false;">
+          <input type="text" placeholder="Your name">
+          <input type="email" placeholder="Your email">
+          <textarea placeholder="Your message"></textarea>
+          <button class="btn grad" type="submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Khushi Raj. All rights reserved.</footer>
+
+</body>
+</html>
